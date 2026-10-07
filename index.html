@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kamelia Sepanloo | Human-AI Interaction and Extended Reality</title>
+<meta name="description" content="Kamelia Sepanloo, Ph.D. candidate in Industrial Engineering at Purdue University. Research on multimodal AI, extended reality, and human factors for high-stakes training.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F5F4;
+    --surface: #FFFFFF;
+    --ink: #17252B;
+    --muted: #556870;
+    --line: #D3DBDB;
+    --accent: #0F6E73;
+    --accent-soft: #DCEEEC;
+    --signal: #C2417A;
+    --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10191D; --surface: #172327; --ink: #E3ECEC; --muted: #9DB0B3;
+      --line: #2A3A3F; --accent: #5CC3BF; --accent-soft: #1B3335; --signal: #EE7FAF;
+    }
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px)); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--serif); font-size: 1.125rem; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+  /* Top bar */
+  header.bar {
+    position: sticky; top: 0; z-index: 10;
+    padding-top: env(safe-area-inset-top, 0px);
+    margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 4rem; }
+  .bar .name { font-family: var(--sans); font-weight: 700; font-size: 1.0625rem; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .bar nav { overflow-x: auto; scrollbar-width: none; }
+  .bar nav::-webkit-scrollbar { display: none; }
+  .bar ul { list-style: none; display: flex; gap: 1.25rem; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.9375rem; font-weight: 500; white-space: nowrap; }
+  .bar ul a { color: var(--muted); text-decoration: none; }
+  .bar ul a:hover, .bar ul a.active { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: clamp(3rem, 8vw, 5.5rem) 0 2rem; display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: start; }
+  .hero h1 { font-family: var(--sans); font-weight: 700; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 0.75rem; }
+  .hero .role { font-family: var(--sans); font-size: 1.0625rem; color: var(--muted); margin: 0 0 2rem; line-height: 1.5; }
+  .hero .statement { font-size: clamp(1.3rem, 2.4vw, 1.625rem); line-height: 1.45; max-width: 40rem; margin: 0; }
+  .portrait {
+    width: clamp(8rem, 18vw, 11.5rem); aspect-ratio: 4 / 5; border-radius: 0.75rem;
+    background: var(--accent-soft); color: var(--accent);
+    display: grid; place-items: center; overflow: hidden;
+    font-family: var(--sans); font-weight: 700; font-size: 2.5rem;
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .market {
+    margin-top: 2rem; padding: 1rem 1.25rem; border-left: 4px solid var(--signal);
+    background: var(--surface); border-radius: 0 0.5rem 0.5rem 0; max-width: 40rem;
+    font-size: 1.0625rem;
+  }
+  .market strong { font-family: var(--sans); font-weight: 600; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; }
+  .links a { padding: 0.55em 1.05em; border: 1.5px solid var(--line); border-radius: 0.5rem; text-decoration: none; color: var(--ink); background: var(--surface); }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .links a.primary:hover { filter: brightness(1.08); color: #fff; }
+
+  /* The signal trace: the page's one signature element */
+  .trace { display: block; width: 100%; height: 64px; margin: 2.5rem 0 0; }
+  .trace path { fill: none; stroke: var(--signal); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .trace .base { stroke: var(--line); stroke-width: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .trace path.live { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 2.4s ease-out .3s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+  }
+
+  /* Sections */
+  section { padding: clamp(3rem, 6vw, 4.5rem) 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: 0; }
+  .sec { display: grid; grid-template-columns: 13rem 1fr; gap: 2rem; }
+  h2 { font-family: var(--sans); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.015em; margin: 0; line-height: 1.25; }
+  h3 { font-family: var(--sans); font-weight: 600; font-size: 1.1875rem; line-height: 1.35; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
+  .prose p { margin: 0 0 1.1rem; max-width: 42rem; }
+  .muted { color: var(--muted); }
+
+  .interests { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.75rem; max-width: 42rem; }
+  .interests h3 { font-size: 1rem; color: var(--muted); }
+  .chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .chips li { font-family: var(--sans); font-size: 0.875rem; font-weight: 500; padding: 0.3em 0.75em; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+
+  .edu { list-style: none; padding: 0; margin: 2rem 0 0; max-width: 42rem; }
+  .edu li { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+  .edu li:last-child { border-bottom: 0; }
+  .edu .yr { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); white-space: nowrap; }
+
+  /* Research projects */
+  .projects { display: grid; gap: 1.25rem; }
+  .project { background: var(--surface); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.5rem 1.6rem; }
+  .project.lead { border-left: 4px solid var(--accent); }
+  .project .when { font-family: var(--sans); font-size: 0.875rem; color: var(--muted); margin-bottom: 0.35rem; }
+  .project p { margin: 0; font-size: 1.0625rem; }
+
+  /* Publications */
+  .pubgroup + .pubgroup { margin-top: 2.5rem; }
+  .pubgroup h3 { font-size: 1.0625rem; color: var(--muted); margin-bottom: 0.9rem; }
+  ol.pubs { margin: 0; padding-left: 1.6rem; }
+  ol.pubs li { margin-bottom: 1rem; padding-left: 0.35rem; font-size: 1.0625rem; line-height: 1.55; }
+  ol.pubs li::marker { font-family: var(--sans); color: var(--muted); font-size: 0.875rem; }
+  .me { font-weight: 600; }
+  .venue { font-style: italic; }
+  .badge { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; padding: 0.15em 0.55em; border-radius: 4px; background: var(--accent-soft); color: var(--accent); margin-left: 0.35rem; white-space: nowrap; }
+
+  details { margin-top: 1rem; }
+  summary { font-family: var(--sans); font-weight: 600; font-size: 0.9375rem; color: var(--accent); cursor: pointer; padding: 0.4rem 0; }
+  summary:hover { text-decoration: underline; }
+
+  /* Simple two-column rows (awards, teaching, service) */
+  .rows { list-style: none; padding: 0; margin: 0; }
+  .rows > li { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .rows > li:first-child { padding-top: 0; }
+  .rows > li:last-child { border-bottom: 0; }
+  .rows .t { font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; }
+  .rows .d { font-family: var(--sans); font-size: 0.9375rem; color: var(--muted); white-space: nowrap; }
+  .rows .x { grid-column: 1 / -1; font-size: 1rem; color: var(--muted); margin: 0; }
+
+  .subhead { font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; margin: 2.5rem 0 1rem; }
+  .subhead:first-child { margin-top: 0; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem 2rem; }
+  .skills h3 { font-size: 1rem; }
+  .skills p { margin: 0; font-size: 1rem; color: var(--muted); }
+
+  /* Contact */
+  .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.75rem; max-width: 42rem; }
+  .contact-card p { margin: 0 0 0.5rem; }
+  .contact-card .email { font-family: var(--sans); font-weight: 600; font-size: clamp(1.125rem, 3vw, 1.375rem); }
+
+  footer { padding: 2rem 0 3rem; font-family: var(--sans); font-size: 0.875rem; color: var(--muted); border-top: 1px solid var(--line); }
+
+  @media (max-width: 800px) {
+    .sec { grid-template-columns: 1fr; gap: 1.25rem; }
+    .hero { grid-template-columns: 1fr; }
+    .portrait { order: -1; width: 7rem; font-size: 1.75rem; }
+    .interests { grid-template-columns: 1fr; }
+    .bar .name { display: none; }
+  }
+  @media (max-width: 520px) {
+    .rows > li, .edu li { grid-template-columns: 1fr; }
+    .rows .d, .edu .yr { white-space: normal; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  @media print {
+    header.bar, .trace, .links { display: none; }
+    body { background: #fff; color: #000; }
+    details:not([open]) > *:not(summary) { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="name" href="#top">Kamelia Sepanloo</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Kamelia Sepanloo</h1>
+        <p class="role">Ph.D. Candidate in Industrial Engineering<br>Edwardson School of Industrial Engineering, Purdue University</p>
+        <p class="statement">I build multimodal AI and extended reality systems that sense how people think, feel and perform under pressure, and adapt to help them learn in high-stakes settings like clinical care.</p>
+        <div class="market">
+          <strong>On the 2026–2027 academic job market.</strong> I am seeking tenure-track faculty positions in industrial engineering, human factors, and human-centered AI.
+        </div>
+        <div class="links">
+          <a class="primary" href="CV_Kamelia_Sepanloo.pdf">Download CV</a>
+          <a href="https://scholar.google.com/">Google Scholar</a>
+          <a href="https://www.linkedin.com/">LinkedIn</a>
+          <a href="mailto:ksepanlo@purdue.edu">Email</a>
+        </div>
+      </div>
+      <!-- To add a photo: upload photo.jpg to the repo and replace "KS" with
+           <img src="photo.jpg" alt="Portrait of Kamelia Sepanloo"> -->
+      <div class="portrait" aria-hidden="true">KS</div>
+    </div>
+
+    <svg class="trace" viewBox="0 0 1000 64" preserveAspectRatio="none" aria-hidden="true">
+      <path class="base" d="M0 40 H1000"/>
+      <path class="live" d="M0 40 L120 40 L140 36 L155 40 L210 40 L222 44 L232 8 L244 56 L254 40 L330 40 L350 34 L368 40 L470 40 L482 44 L492 10 L504 54 L514 40 L590 40 L610 35 L628 40 L720 40 L732 44 L742 6 L754 58 L764 40 L840 40 L860 34 L878 40 L1000 40"/>
+    </svg>
+  </div>
+
+  <section id="about">
+    <div class="wrap sec">
+      <h2>About</h2>
+      <div class="prose">
+        <p>I am a Ph.D. candidate in Industrial Engineering at Purdue University, advised by <a href="https://engineering.purdue.edu/IE">Dr. Young-Jun Son</a>. My research sits at the intersection of human-AI interaction, human factors engineering and extended reality (XR).</p>
+        <p>My dissertation develops an adaptive, multimodal AI framework for mixed and virtual reality clinical training. The system combines conversational AI virtual patients with physiological signals, eye-tracking, behavior and dialogue to model trainees' stress, cognitive load and situational awareness, for individuals and for teams. More broadly, I study when and how intelligent systems should adapt to the people using them, with applications in healthcare, digital twins and autonomous systems.</p>
+        <p>My work has been published in venues including <span class="venue">Educational Technology Research and Development</span> and <span class="venue">Sensors</span>, and recognized with the Trailblazers in Engineering Fellowship and first place in the IISE Doctoral Colloquium 3-Minute Thesis competition.</p>
+
+        <div class="interests">
+          <div>
+            <h3>Methodology</h3>
+            <ul class="chips">
+              <li>Human-AI Interaction</li><li>Human-Computer Interaction</li><li>Human Factors Engineering</li><li>Deep Learning Architectures</li><li>Large Language Models</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Applications</h3>
+            <ul class="chips">
+              <li>XR (AR/MR/VR) Training</li><li>Team Dynamics</li><li>Conversational AI Agents</li><li>Healthcare</li><li>Digital Twins &amp; Autonomous Systems</li>
+            </ul>
+          </div>
+        </div>
+
+        <ul class="edu">
+          <li><span><strong>Ph.D., Industrial Engineering</strong>, Purdue University <span class="muted">(GPA 4.0)</span></span><span class="yr">2022–2027 (expected)</span></li>
+          <li><span><strong>M.Sc., Industrial Engineering</strong>, Purdue University <span class="muted">(GPA 4.0)</span></span><span class="yr">2022–2024</span></li>
+          <li><span><strong>B.Sc., Industrial Engineering</strong>, Sharif University of Technology</span><span class="yr">2016–2021</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap sec">
+      <h2>Research</h2>
+      <div class="projects">
+        <article class="project lead">
+          <div class="when">2022–present, dissertation research</div>
+          <h3>Multimodal AI-enhanced XR framework for nursing training and evaluation</h3>
+          <p>A mixed and virtual reality clinical training platform (Unity, C#, Python) in which nursing students interact with conversational AI virtual patients. The framework fuses physiological signals, eye-tracking, behavioral interactions and trainee dialogue to model stress, cognitive load and situational awareness in individual and team-based clinical scenarios.</p>
+        </article>
+        <article class="project">
+          <div class="when">2025–present</div>
+          <h3>Embodied AI and digital twins for autonomous decision-making</h3>
+          <p>Autonomous systems that turn incomplete, real-time perception into uncertainty-aware world models and adaptive decisions, including generative 3D scene completion for digital twin initialization under occlusion and context-aware dynamic risk modeling for mobile robot navigation.</p>
+        </article>
+        <article class="project">
+          <div class="when">2026–present, with Softpuzzle (South Korea)</div>
+          <h3>Physics-informed fire AI foundation model for intelligent space safety</h3>
+          <p>A graph neural network module within a two-stage CNN + PINN/GNN architecture that represents building spatial topology and evaluates evacuation-route graphs, supporting occupant risk analysis and dynamic evacuation guidance in an international R&amp;D collaboration.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap sec">
+      <h2>Publications</h2>
+      <div>
+        <div class="pubgroup">
+          <h3>Publications</h3>
+          <ol class="pubs">
+            <li>Srinivasaprasad, A., <span class="me">Sepanloo, K.</span>, Jahromi, S. N., Yu, D., &amp; Duffy, V. G. (2025). How AI chatbot response style affects cognitive load and performance in educational tasks. <span class="venue">International Conference on Human-Computer Interaction (HCII)</span>.</li>
+            <li><span class="me">Sepanloo, K.</span>, Shevelev, D., Islam, M. T., Son, Y.-J., Aras, S., &amp; Hinton, J. E. (2025). Improving nursing education through an AI-enhanced mixed reality training platform: Development and pilot evaluation. <span class="venue">Educational Technology Research and Development</span>, 73(3), 1835–1863.</li>
+            <li><span class="me">Sepanloo, K.</span>, Shevelev, D., Son, Y.-J., Aras, S., &amp; Hinton, J. E. (2025). Assessing physiological stress responses in student nurses using mixed reality training. <span class="venue">Sensors</span>, 25(10), 3222.</li>
+            <li>Islam, M. T., <span class="me">Sepanloo, K.</span>, Woo, S., Woo, S. H., &amp; Son, Y.-J. (2025). A review of the Industry 4.0 to 5.0 transition: Exploring the intersection, challenges, and opportunities of technology and human–machine collaboration. <span class="venue">Machines</span>, 267.</li>
+            <li><span class="me">Sepanloo, K.</span>, Ahmadi Gharehtoragh, M., &amp; Duffy, V. G. (2024). Transforming user experience through extended reality and conversational AI. <span class="venue">International Conference on Human-Computer Interaction (HCII)</span>.</li>
+            <li><span class="me">Sepanloo, K.</span>, Chen, Y., Shevelev, D., Aras, S., Newton, T., Son, Y.-J., &amp; Hinton, J. E. (2023). A multi-sensor integrated with AR system for precise nursing education and analysis. <span class="venue">IISE Annual Conference Proceedings</span>.</li>
+            <li>Islam, M. T., <span class="me">Sepanloo, K.</span>, Velluvakkandy, R., Luebke, A., &amp; Duffy, V. G. (2023). Enhancing ergonomic design process with digital human models for improved driver comfort in space environment. <span class="venue">International Conference on Human-Computer Interaction (HCII)</span>.</li>
+          </ol>
+        </div>
+        <div class="pubgroup">
+          <h3>Work in progress</h3>
+          <ol class="pubs" start="8">
+            <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2026). Uncovering human responses to dynamic task demands through multimodal behavioral and physiological signals. To be submitted to <span class="venue">Computers in Human Behavior</span>.</li>
+            <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2026). When should intelligent systems adapt? A framework for evaluating context-aware assistance in high-stakes environments. To be submitted to <span class="venue">IEEE Access</span>.</li>
+            <li>Woo, S. H., Woo, S., <span class="me">Sepanloo, K.</span>, Islam, M. T., &amp; Son, Y.-J. (2026). Generative agent-based simulation: Adaptive decision-making in data-scarce environments. To be submitted to <span class="venue">Engineering Applications of Artificial Intelligence</span>.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="talks">
+    <div class="wrap sec">
+      <h2>Talks and presentations</h2>
+      <div>
+        <ol class="pubs">
+          <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2026). An adaptive multimodal AI–extended reality framework for high-acuity clinical training environments. <span class="venue">INFORMS Annual Meeting</span>, San Francisco, CA.<span class="badge">Job talk</span></li>
+          <li>Hinton, J. E., Newton, T., &amp; <span class="me">Sepanloo, K.</span> (2026). XR family avatars reveal SDOH &amp; promote empathy in patient rescue scenarios. <span class="venue">NLN Education Summit</span>, Washington, DC.</li>
+          <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2026). Multimodal AI-driven extended reality simulations for clinical training. <span class="venue">IISE Annual Conference and Expo</span>, Arlington, TX.</li>
+          <li>Hinton, J. E., <span class="me">Sepanloo, K.</span>, Son, Y.-J., Aras, S., &amp; Newton, T. (2026). Evaluating the feasibility of an adaptive intelligent simulation environment: Integrating XR, AI, and biosensors to optimize cognitive load while advancing nursing competencies. <span class="venue">International Meeting on Simulation in Healthcare (IMSH)</span>, San Antonio, TX.</li>
+          <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2026). Integrating empathy, compassion, and simulation technology: Advancing care with extended reality, artificial intelligence, and biosensors. <span class="venue">AI Research Showcase Poster Session</span>, Purdue University.</li>
+        </ol>
+        <details>
+          <summary>Show all 14 presentations</summary>
+          <ol class="pubs" start="6">
+            <li>Hinton, J. E., <span class="me">Sepanloo, K.</span>, Son, Y.-J., Aras, S., &amp; Schroeder, L. (2026). Use of simulation in nursing education at the University of Arizona College of Nursing. Seminar at <span class="venue">Instituto Internacional de Estudios Superiores en Salud</span>, Mexico.<span class="badge">Invited</span></li>
+            <li>Hinton, J. E., <span class="me">Sepanloo, K.</span>, &amp; Shevelev, D. (2025). Integrating compassion and simulation technology: Advancing care with extended reality, artificial intelligence, and biosensors. <span class="venue">Inland NW Nurse Educator Conference</span>, Gonzaga University, Spokane, WA.</li>
+            <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2025). Assessing cognitive load via physiological analysis in nursing training using extended reality. <span class="venue">IISE Annual Conference and Expo</span>, Atlanta, GA.</li>
+            <li><span class="me">Sepanloo, K.</span>, Son, Y.-J., &amp; Hinton, J. E. (2025). Multimodal evaluation of nurse trainees in extended reality. <span class="venue">INFORMS Annual Meeting</span>, Atlanta, GA.</li>
+            <li>Hinton, J. E., <span class="me">Sepanloo, K.</span>, Shevelev, D., Hardy, C., &amp; Son, Y.-J. (2024). Intelligent simulation environment for competence: XR, AI, and biosensors. <span class="venue">NLN Education Summit</span>, San Antonio, TX.</li>
+            <li>Hinton, J. E., <span class="me">Sepanloo, K.</span>, Shevelev, D., Hardy, C., &amp; Son, Y.-J. (2024). Intelligent simulation environment for competence: XR, AI, and biosensors. <span class="venue">Annual Arizona Simulation Conference</span>, Mesa, AZ.</li>
+            <li><span class="me">Sepanloo, K.</span>, Chen, Y., &amp; Son, Y.-J. (2024). Exploring the impact of extended reality training systems on nursing education: A comprehensive physiological study. <span class="venue">INFORMS Annual Meeting</span>, Seattle, WA.</li>
+            <li><span class="me">Sepanloo, K.</span>, Chen, Y., &amp; Son, Y.-J. (2023). A precise nursing training system integrating conversational artificial intelligence and mixed reality. <span class="venue">INFORMS Annual Meeting</span>, Phoenix, AZ.</li>
+            <li><span class="me">Sepanloo, K.</span>, Chen, Y., &amp; Son, Y.-J. (2023). A multi-sensor integrated augmented reality system for precise nursing education and analysis. <span class="venue">IISE Annual Conference and Expo</span>, New Orleans, LA.</li>
+          </ol>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="wrap sec">
+      <h2>Teaching and mentoring</h2>
+      <div>
+        <p class="subhead">Teaching</p>
+        <ul class="rows">
+          <li><span class="t">Transition to Professional Nursing Practice (NUR 42001)</span><span class="d">Fall 2026</span><p class="x">Teaching assistant, School of Nursing, Purdue University. Lectured on simulation-based training methods and supervised clinical simulation hours.</p></li>
+          <li><span class="t">Computer Information Systems in Industrial Engineering (IE 774)</span><span class="d">Fall 2020, Spring 2021</span><p class="x">Teaching assistant, Sharif University of Technology. Lectured on entity-relationship modeling and Microsoft Access; supervised group projects.</p></li>
+          <li><span class="t">Fundamentals of Modern Manufacturing (IE 512)</span><span class="d">Fall 2020</span><p class="x">Teaching assistant, Sharif University of Technology. Lectured on manufacturing processes; supervised group projects.</p></li>
+          <li><span class="t">Engineering Statistics (IE 012)</span><span class="d">Fall 2019</span><p class="x">Teaching assistant, Sharif University of Technology. Guided projects, graded assignments and exams, and held office hours.</p></li>
+        </ul>
+
+        <p class="subhead">Mentoring</p>
+        <p class="prose" style="margin:0 0 1rem;max-width:42rem">I have mentored 12 undergraduate and graduate students from five institutions across three countries, leading to conference presentations and publications.</p>
+        <ul class="rows">
+          <li><span class="t">Human-robot interaction and performance analysis</span><span class="d">2026–present</span><p class="x">One undergraduate student, Universidad del Norte.</p></li>
+          <li><span class="t">Human-subject experimentation</span><span class="d">2026–present</span><p class="x">Two undergraduate students, Edwardson School of Industrial Engineering, Purdue.</p></li>
+          <li><span class="t">Semiconductor process simulation and bottleneck analysis</span><span class="d">2025–2026</span><p class="x">One undergraduate student, Technological University of Panama (FlexSim).</p></li>
+          <li><span class="t">Digital twin modeling of autonomous vehicles</span><span class="d">2024–present</span><p class="x">Five students from Purdue, the National University of Colombia and Pontifical Xavierian University (NVIDIA Omniverse, ROS).</p></li>
+          <li><span class="t">XR human modeling and multiplayer platform</span><span class="d">2023–2024</span><p class="x">Three students from Computer Science and the College of Humanities, University of Arizona (Unity 3D).</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="service">
+    <div class="wrap sec">
+      <h2>Service and leadership</h2>
+      <div>
+        <ul class="rows">
+          <li><span class="t">President, INFORMS Student Chapter, Purdue University</span><span class="d">2026–present</span></li>
+          <li><span class="t">Vice President, Industrial Engineering Graduate Students Organization</span><span class="d">2025–2026</span></li>
+          <li><span class="t">Senator, Industrial Engineering Graduate Students Organization</span><span class="d">2024–2025</span></li>
+          <li><span class="t">Journal Editor, <span class="venue">Computational Research Progress in Applied Science &amp; Engineering</span></span><span class="d">2025–present</span></li>
+          <li><span class="t">Session Chair, INFORMS Annual Meeting</span><span class="d">Nov 2026</span><p class="x">From data to decisions: Integrating models and human behavior (Decision Analysis Society)</p></li>
+          <li><span class="t">Session Chair, IISE Annual Conference and Expo</span><span class="d">May 2026</span><p class="x">Physics-based computational simulation and modeling (Simulation and Modeling Track)</p></li>
+          <li><span class="t">Session Chair, INFORMS Annual Meeting</span><span class="d">Oct 2025</span><p class="x">Augmenting human learning in XR: A cognitive and affective perspective (Decision Analysis Society)</p></li>
+          <li><span class="t">Peer Reviewer</span><span class="d">2023–present</span><p class="x">Scientific Reports, npj Health Systems, International Journal of Human-Computer Interaction, BMC Nursing, BMC Health Services Research, Frontiers in Virtual Reality, Frontiers in Digital Health, and others, plus the IISE Conference.</p></li>
+        </ul>
+        <p class="subhead">Professional memberships</p>
+        <p class="muted" style="margin:0">IISE (2022–present), INFORMS (2022–present), Human Factors and Ergonomics Society (2025–present)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="wrap sec">
+      <h2>Awards and honors</h2>
+      <ul class="rows">
+        <li><span class="t">Trailblazers in Engineering (TBE) Fellowship, Purdue University</span><span class="d">Jun 2026</span></li>
+        <li><span class="t">First Place, 3-Minute Thesis, IISE Doctoral Colloquium</span><span class="d">May 2026</span></li>
+        <li><span class="t">POOIA Student Scholarship, Professional Organization of Iranian-Americans</span><span class="d">Jan 2026</span></li>
+        <li><span class="t">A.H. Ismail Interdisciplinary Travel Support Grant, Purdue University</span><span class="d">Mar 2025</span></li>
+        <li><span class="t">Theodore Williams Fellowship in Industrial Control Systems, Purdue University</span><span class="d">Oct 2024</span></li>
+        <li><span class="t">Second Place, Systems Collaboratory Summit Poster Competition, Purdue University</span><span class="d">Apr 2024</span></li>
+        <li><span class="t">SIE Wildcat Scholarship, University of Arizona</span><span class="d">Jan 2022</span></li>
+        <li><span class="t">Top 1% of over one million participants, Iranian National University Entrance Exam</span><span class="d">Jun 2016</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap sec">
+      <h2>Technical skills</h2>
+      <div class="skills">
+        <div><h3>AI and machine learning</h3><p>LLMs, conversational AI, RAG, prompt engineering, multimodal AI, deep learning (PyTorch), CNNs, GNNs, ensemble methods</p></div>
+        <div><h3>XR development</h3><p>Unity 3D, HoloLens 2, Meta Quest Pro, multiplayer XR environments</p></div>
+        <div><h3>Programming</h3><p>Python, C#, MATLAB, C, real-time and modular system design</p></div>
+        <div><h3>Data and sensing</h3><p>Physiological signal processing, wearable biosensors, eye-tracking, sensor fusion, time-series analysis, experimental design</p></div>
+        <div><h3>Simulation and modeling</h3><p>Discrete-event and agent-based simulation, Arena, AnyLogic, FlexSim, NVIDIA Omniverse, ROS</p></div>
+        <div><h3>Human factors</h3><p>Cognitive load assessment, human-AI interaction, user experience evaluation, simulation-based training</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap sec">
+      <h2>Contact</h2>
+      <div class="contact-card">
+        <p><a class="email" href="mailto:ksepanlo@purdue.edu">ksepanlo@purdue.edu</a></p>
+        <p class="muted">Edwardson School of Industrial Engineering<br>Purdue University, West Lafayette, IN</p>
+        <p style="margin-top:1rem"><a href="CV_Kamelia_Sepanloo.pdf">Full CV (PDF)</a>, including references</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Kamelia Sepanloo. Last updated October 2026.</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // Highlight the current section in the nav
+  const links = [...document.querySelectorAll('.bar ul a')];
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
