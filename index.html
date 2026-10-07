@@ -120,6 +120,15 @@
   .project .when { font-family: var(--sans); font-size: 0.875rem; color: var(--muted); margin-bottom: 0.35rem; }
   .project p { margin: 0; font-size: 1.0625rem; }
 
+
+  /* Demos */
+  .demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; }
+  .demo { margin: 0; }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 0.75rem; overflow: hidden; background: var(--ink); border: 1px solid var(--line); }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .demo figcaption { margin-top: 0.85rem; font-size: 1rem; color: var(--muted); }
+  .demo figcaption strong { display: block; font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; color: var(--ink); margin-bottom: 0.2rem; }
+
   /* Publications */
   .pubgroup + .pubgroup { margin-top: 2.5rem; }
   .pubgroup h3 { font-size: 1.0625rem; color: var(--muted); margin-bottom: 0.9rem; }
@@ -185,6 +194,7 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
+        <li><a href="#demos">Demos</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#talks">Talks</a></li>
         <li><a href="#teaching">Teaching</a></li>
@@ -208,8 +218,8 @@
         </div>
         <div class="links">
           <a class="primary" href="CV_Kamelia_Sepanloo.pdf">Download CV</a>
-          <a href="https://scholar.google.com/">Google Scholar</a>
-          <a href="https://www.linkedin.com/">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=y1tK_JMAAAAJ&amp;hl=en">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/kamelia-sepanloo/">LinkedIn</a>
           <a href="mailto:ksepanlo@purdue.edu">Email</a>
         </div>
       </div>
@@ -275,6 +285,29 @@
           <h3>Physics-informed fire AI foundation model for intelligent space safety</h3>
           <p>A graph neural network module within a two-stage CNN + PINN/GNN architecture that represents building spatial topology and evaluates evacuation-route graphs, supporting occupant risk analysis and dynamic evacuation guidance in an international R&amp;D collaboration.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="demos">
+    <div class="wrap sec">
+      <h2>Demos</h2>
+      <div>
+        <p class="prose" style="margin:0 0 1.5rem;max-width:42rem">The AI-enhanced clinical training platform from my dissertation, shown in mixed and virtual reality.</p>
+        <div class="demos">
+          <figure class="demo">
+            <div class="video">
+              <iframe src="https://www.youtube-nocookie.com/embed/tveAYvkUC_Y" title="Mixed reality nursing training demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <figcaption><strong>Mixed reality training</strong>Trainees work with a conversational AI virtual patient overlaid on the real clinical environment. <a href="https://www.youtube.com/watch?v=tveAYvkUC_Y">Watch on YouTube</a></figcaption>
+          </figure>
+          <figure class="demo">
+            <div class="video">
+              <iframe src="https://www.youtube-nocookie.com/embed/axJs9Z2MaMw" title="Virtual reality nursing training demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <figcaption><strong>Virtual reality training</strong>A fully immersive clinical scenario with an AI-driven virtual patient. <a href="https://www.youtube.com/watch?v=axJs9Z2MaMw">Watch on YouTube</a></figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
