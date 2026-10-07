@@ -71,7 +71,8 @@
     display: grid; place-items: center; overflow: hidden;
     font-family: var(--sans); font-weight: 700; font-size: 2.5rem;
   }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait { position: relative; }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
   .market {
     margin-top: 2rem; padding: 1rem 1.25rem; border-left: 4px solid var(--signal);
@@ -214,7 +215,7 @@
         <p class="role">Ph.D. Candidate in Industrial Engineering<br>Edwardson School of Industrial Engineering, Purdue University</p>
         <p class="statement">I build multimodal AI and extended reality systems that sense how people think, feel and perform under pressure, and adapt to help them learn in high-stakes settings like clinical care.</p>
         <div class="market">
-          <strong>On the 2026–2027 academic job market.</strong> I am seeking tenure-track faculty positions in industrial engineering, human factors, and human-centered AI.
+          <strong>On the 2026–2027 academic job market.</strong> I am seeking faculty positions in industrial engineering, human factors, and human-centered AI.
         </div>
         <div class="links">
           <a class="primary" href="CV_Kamelia_Sepanloo.pdf">Download CV</a>
@@ -223,9 +224,9 @@
           <a href="mailto:ksepanlo@purdue.edu">Email</a>
         </div>
       </div>
-      <!-- To add a photo: upload photo.jpg to the repo and replace "KS" with
-           <img src="photo.jpg" alt="Portrait of Kamelia Sepanloo"> -->
-      <div class="portrait" aria-hidden="true">KS</div>
+      <!-- Photo: upload a file named photo.jpg to the repo and it appears here automatically.
+           Until then, the initials "KS" are shown. -->
+      <div class="portrait"><span aria-hidden="true">KS</span><img src="photo.jpg" alt="Portrait of Kamelia Sepanloo" onerror="this.remove()"></div>
     </div>
 
     <svg class="trace" viewBox="0 0 1000 64" preserveAspectRatio="none" aria-hidden="true">
@@ -238,7 +239,7 @@
     <div class="wrap sec">
       <h2>About</h2>
       <div class="prose">
-        <p>I am a Ph.D. candidate in Industrial Engineering at Purdue University, advised by <a href="https://engineering.purdue.edu/IE">Dr. Young-Jun Son</a>. My research sits at the intersection of human-AI interaction, human factors engineering and extended reality (XR).</p>
+        <p>I am a Ph.D. candidate in Industrial Engineering at Purdue University, advised by <a href="https://engineering.purdue.edu/IE/people/ptProfile?resource_id=270111">Dr. Young-Jun Son</a>. My research sits at the intersection of human-AI interaction, human factors engineering and extended reality (XR).</p>
         <p>My dissertation develops an adaptive, multimodal AI framework for mixed and virtual reality clinical training. The system combines conversational AI virtual patients with physiological signals, eye-tracking, behavior and dialogue to model trainees' stress, cognitive load and situational awareness, for individuals and for teams. More broadly, I study when and how intelligent systems should adapt to the people using them, with applications in healthcare, digital twins and autonomous systems.</p>
         <p>My work has been published in venues including <span class="venue">Educational Technology Research and Development</span> and <span class="venue">Sensors</span>, and recognized with the Trailblazers in Engineering Fellowship and first place in the IISE Doctoral Colloquium 3-Minute Thesis competition.</p>
 
@@ -258,9 +259,9 @@
         </div>
 
         <ul class="edu">
-          <li><span><strong>Ph.D., Industrial Engineering</strong>, Purdue University <span class="muted">(GPA 4.0)</span></span><span class="yr">2022–2027 (expected)</span></li>
-          <li><span><strong>M.Sc., Industrial Engineering</strong>, Purdue University <span class="muted">(GPA 4.0)</span></span><span class="yr">2022–2024</span></li>
-          <li><span><strong>B.Sc., Industrial Engineering</strong>, Sharif University of Technology</span><span class="yr">2016–2021</span></li>
+          <li><span><strong>Ph.D., Industrial Engineering</strong>, Purdue University <span class="muted">(GPA 4.0/4.0)</span></span><span class="yr">2022–2027 (expected)</span></li>
+          <li><span><strong>M.Sc., Industrial Engineering</strong>, Purdue University <span class="muted">(GPA 4.0/4.0)</span></span><span class="yr">2022–2024</span></li>
+          <li><span><strong>B.Sc., Industrial Engineering</strong>, Sharif University of Technology <span class="muted">(GPA 3.5/4.0)</span></span><span class="yr">2016–2021</span></li>
         </ul>
       </div>
     </div>
